@@ -3,23 +3,9 @@ pipeline {
     stages {
         stage("git") {
             steps {
-                
-                
-                  script {
-                    withCredentials([
-                        usernamePassword(credentialsId: 'gitlab',
-                        usernameVariable: 'username',
-                        passwordVariable: 'password')
-                    ]) {
+                println("welcome to jenkins pipeline")
+                git credentialsId: 'git_credentials', url: 'https://github.com/ravdy/hello-world.git'
 
-                        url: 'https://github.com/ravdy/hello-world.git'
-                        print 'username=' + username + 'password=' + password
-
-                        print 'username.collect { it }=' + username.collect { it }
-                        print 'password.collect { it }=' + password.collect { it }
-                        println("Cloning repo")
-                    }
-        }
             }
         }
     }
